@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: demo-java26
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSSXXX} [%level] [%thread] %logger - %msg%n"
+  level:
+    root: ${LOG_LEVEL_ROOT:INFO}
+    com.example.demo_java26.DemoJava26Application: ${LOG_LEVEL_MAIN:DEBUG}
+
+  structured:
+    json:
+      rename:
+        "@timestamp": timestamp
+        logger_name: class
+        thread_name: thread
+      exclude:
+        - "@version"
+        - level_value
+      add:
+        service: ${spring.application.name}
+        environment: ${APP_ENV:local}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+  endpoint:
+    health:
+      probes:
+        enabled: true
