@@ -24,11 +24,19 @@ public class Controller {
             number = ThreadLocalRandom.current().nextInt(1, 6);
             if (number > 3) {
                 log.error("Random number is not expected: {}", number);
-            } else {
+            }
+            else {
                 log.warn("Random number is temp: {}", number);
             }
         }
         log.info("Random number is {}", number);
         return ResponseEntity.ok(number);
+    }
+
+    @GetMapping("divide")
+    public ResponseEntity<?> divide(@RequestParam(required = false) Double a, @RequestParam(required = false, defaultValue = "0") Double b) {
+        Double result = a / b;
+        log.info("Divide result is {}/{} = {}", a, b, result);
+        return ResponseEntity.ok(result);
     }
 }
