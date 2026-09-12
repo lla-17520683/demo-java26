@@ -37,7 +37,7 @@ jobs:
           appSourcePath: ${{ github.workspace }}
           _dockerfilePathKey_: _dockerfilePath_
           _targetLabelKey_: _targetLabel_
-          registryUrl: 
+          registryUrl: ${{ secrets.DEMOJAVA26_REGISTRY_URL }}
           registryUsername: ${{ secrets.DEMOJAVA26_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.DEMOJAVA26_REGISTRY_PASSWORD }}
           containerAppName: demo-java26
