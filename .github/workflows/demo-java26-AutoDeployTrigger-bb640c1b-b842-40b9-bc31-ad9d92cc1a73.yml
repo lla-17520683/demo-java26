@@ -42,7 +42,7 @@ jobs:
           registryPassword: ${{ secrets.DEMOJAVA26_REGISTRY_PASSWORD }}
           containerAppName: demo-java26
           resourceGroup: lla
-          imageToBuild: default/[parameters('containerAppName')]:${{ github.sha }}
+          imageToBuild: ${{ secrets.DEMOJAVA26_REGISTRY_URL }}/demo-java26:${{ github.sha }}
           _buildArgumentsKey_: |
             _buildArgumentsValues_
 
