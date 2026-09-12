@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 public class DemoJava26Application {
 
-	static void main(String[] args) {
-		SpringApplication.run(DemoJava26Application.class, args);
-		log.debug("Hello everyone! Let go!!!");
-	}
+    static void main(String[] args) {
+        SpringApplication.run(DemoJava26Application.class, args);
+        log.debug("Hello everyone! Let go!!! ...ヾ(≧▽≦*)o");
+    }
 
 }

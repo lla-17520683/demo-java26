@@ -21,12 +21,12 @@ public class Controller {
     @GetMapping("random")
     public ResponseEntity<?> random(@RequestParam(required = false, defaultValue = "0") int number) {
         if (number == 0) {
-            number = ThreadLocalRandom.current().nextInt(1, 6);
+            number = ThreadLocalRandom.current().nextInt(0, 6);
             if (number > 3) {
-                log.error("Random number is not expected: {}", number);
+                log.error("Random number is prohibited: {}", number);
             }
             else {
-                log.warn("Random number is temp: {}", number);
+                log.warn("Random number is not expected: {}", number);
             }
         }
         log.info("Random number is {}", number);
@@ -34,9 +34,17 @@ public class Controller {
     }
 
     @GetMapping("divide")
-    public ResponseEntity<?> divide(@RequestParam(required = false) Double a, @RequestParam(required = false, defaultValue = "0") Double b) {
-        Double result = a / b;
-        log.info("Divide result is {}/{} = {}", a, b, result);
+    public ResponseEntity<?> divide(@RequestParam(required = false) Double a, @RequestParam(required = false) Double b) {
+        Double result;
+        try {
+            result = a / b;
+            log.info("Divide result: {}/{} = {}", a, b, result);
+        }
+        catch (Exception e) {
+            log.error("Error during division: {}", e.getMessage());
+            throw new RuntimeException("Error during division", e);
+//            return ResponseEntity.badRequest().body("Error during division: " + e.getMessage());
+        }
         return ResponseEntity.ok(result);
     }
 }
