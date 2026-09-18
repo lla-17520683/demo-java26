@@ -7,21 +7,10 @@ server:
 
 logging:
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss.SSSXXX} [%level] [%thread] %logger - %msg%n" # only local
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSSXXX} ${spring.application.name} [%level] - %logger - %msg%n" # only local
   level:
     root: ${LOG_LEVEL:INFO}
 #    com.example.demo_java26.DemoJava26Application: ${LOG_LEVEL_MAIN:DEBUG}
-
-  structured:
-    json:
-      rename:
-        logger_name: class
-      exclude:
-        - "@version"
-        - level_value
-#      add:
-#        service: ${spring.application.name}
-#        environment: ${APP_ENV:local}
 
 management:
   endpoints:
